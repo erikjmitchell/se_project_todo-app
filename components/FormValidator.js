@@ -8,6 +8,23 @@ class FormValidator {
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._formElement = formElement;
   }
+const showInputError = (this._formElement, inputElement, errorMessage, ) => {
+  const errorElementId = `#${inputElement.id}-error`;
+  const errorElement = this._formElement.querySelector(errorElementId);
+  inputElement.classList.add(this._inputErrorClass);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add(this._errorClass);
+};
+
+const hideInputError = (this._formElement, inputElement, ) => {
+  const errorElementId = `#${inputElement.id}-error`;
+  const errorElement = this._formElement.querySelector(errorElementId);
+  inputElement.classList.remove(this._inputErrorClass);
+  errorElement.classList.remove(this._errorClass);
+  errorElement.textContent = "";
+};
+
+
   _checkInputValidity = (this._formElement, inputElement) => {
     if (!inputElement.validity.valid) {
       showInputError(
@@ -45,6 +62,8 @@ class FormValidator {
     });
     this._setEventListeners();
   }
+  resetValidation();
+}
 
 
 export default FormValidator;
