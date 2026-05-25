@@ -1,17 +1,34 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+This project is a fully interactive Todo Application built with JavaScript and refactored using Object-Oriented Programming (OOP) principles and JavaScript modules. The application allows users to create, complete, validate, and remove tasks dynamically while maintaining a clean and scalable code structure.
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+Add New Todo Items
+Users can create new todo tasks through a form input. Each todo can contain:
+-Task name
+-Optional due date
+
+When submitted:
+-A new Todo object is created
+-A unique ID is generated using UUID
+-The task is dynamically rendered to the page
+-The form resets automatically
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
+This project demonstrates:
+
+-JavaScript ES6 Modules
+-Object-Oriented Programming (Classes)
+-DOM Manipulation
+-Form Validation
+-Event Handling
+-Dynamic UI Rendering
+-Template Cloning
+-Unique ID Generation with UUID
+-Clean File Organization
 
 ## Deployment
 
-This project is deployed on GitHub Pages:
-
-- ADD LINK HERE
+{Deployment Link}(https://github.com/erikjmitchell/se_project_todo-app/)
