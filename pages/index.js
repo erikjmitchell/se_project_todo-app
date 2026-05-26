@@ -18,37 +18,36 @@ const openModal = (modal) => {
 const closeModal = (modal) => {
   modal.classList.remove("popup_visible");
 };
+addTodoButton.addEventListener("click", () => {
+  openModal(addTodoPopup);
+});
+
+addTodoCloseBtn.addEventListener("click", () => {
+  closeModal(addTodoPopup);
+});
+
+addTodoForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const name = evt.target.name.value;
+  const dateInput = evt.target.date.value;
+
+  // Create a date object and adjust for timezone
+  const date = new Date(dateInput);
+  date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+
+  const id = uuidv4();
+  const values = { name, date, id };
+  const todo = generateTodo(values);
+  todosList.append(todo);
+  closeModal(addTodoPopup);
+  newTodoValidator.resetValidation();
+});
 
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
   const todo = new Todo(data, "#todo-template");
   const todoElement = todo.getView();
   return todoElement;
-
-  addTodoButton.addEventListener("click", () => {
-    openModal(addTodoPopup);
-  });
-
-  addTodoCloseBtn.addEventListener("click", () => {
-    closeModal(addTodoPopup);
-  });
-
-  addTodoForm.addEventListener("submit", (evt) => {
-    evt.preventDefault();
-    const name = evt.target.name.value;
-    const dateInput = evt.target.date.value;
-
-    // Create a date object and adjust for timezone
-    const date = new Date(dateInput);
-    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-
-    const id = uuidv4();
-    const values = { name, date, id };
-    const todo = generateTodo(values);
-    todosList.append(todo);
-    closeModal(addTodoPopup);
-    resetValidation();
-  });
 };
 
 initialTodos.forEach((item) => {
