@@ -12,17 +12,18 @@ import PopupWithForm from "../components/PopupWithForm.js";
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopupEl = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
-const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close");
+
 const todoTemplate = document.querySelector("#todo-template");
 const todosList = document.querySelector(".todos__list");
 
+const todoTemplateSelector = "#todo-template";
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
   handleFormSubmit: (inputValues) => {
-    const name = inputValues.name.value;
-    const dateInput = inputValues.date.value;
+    const name = inputValues.name;
+    const dateInput = inputValues.date;
 
     // Create a date object and adjust for timezone
     const date = new Date(dateInput);
@@ -31,7 +32,7 @@ const addTodoPopup = new PopupWithForm({
     const id = uuidv4();
     const values = { name, date, id };
     const todo = generateTodo(values);
-    addItem(element);
+    section.addItem(todo);
     addTodoPopup.close();
     newTodoValidator.resetValidation();
   },
@@ -50,7 +51,7 @@ function handleDelete(completed) {
 }
 
 const generateTodo = (data) => {
-  const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);
+  const todo = new Todo(data, todoTemplateSelector, handleCheck, handleDelete);
   const todoElement = todo.getView();
   return todoElement;
 };
