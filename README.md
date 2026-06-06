@@ -31,4 +31,4 @@ This project demonstrates:
 
 ## Deployment
 
-[Deployment Link](git@github.com:erikjmitchell/se_project_todo-app.git)
+[Deployment Link](https://github.com/erikjmitchell/se_project_todo-app)
