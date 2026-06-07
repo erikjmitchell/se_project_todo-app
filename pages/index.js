@@ -14,6 +14,7 @@ const addTodoPopupEl = document.querySelector("#add-todo-popup");
 
 const todoTemplate = document.querySelector("#todo-template");
 const todosList = document.querySelector(".todos__list");
+const addTodoForm = document.querySelector("#add-todo-form");
 
 const todoTemplateSelector = "#todo-template";
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
@@ -57,15 +58,18 @@ function handleDelete(completed) {
 const generateTodo = (data) => {
   const todo = new Todo(data, todoTemplateSelector, handleCheck, handleDelete);
   const todoElement = todo.getView();
+
   return todoElement;
 };
 
 const section = new Section({
   items: initialTodos,
-  containerSelectorontainerSelector: ".todos__list",
-  renderer: renderTodo(item),
+  renderer: (item) => {
+    generateTodo(item);
+    section.addItem();
+  },
+  containerSelector: ".todos__list",
 });
-section.renderItems();
 
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();
